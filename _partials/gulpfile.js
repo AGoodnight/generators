@@ -4,11 +4,10 @@ const sass = require('./gulp/gulp_sass')(gulp);
 const lint = require('./gulp/gulp_lint')(gulp);
 const minimize = require('./gulp/gulp_uglify')(gulp);
 
-gulp.task('_default',[
-	'inject-partials',
-	'lint-scripts',
-	'minimize-build',
-	'compile-sass'
-]);
+gulp.task('pre-compile',['lint-scripts','compile-sass','inject-partials']);
 
-gulp.task('default',['_default']);
+gulp.task('compile',['pre-compile','minimize-build']);
+
+gulp.task('post-compile',['compile']);
+
+gulp.task('default',['post-compile']);

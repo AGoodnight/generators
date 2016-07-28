@@ -4,7 +4,9 @@ const sass = require('gulp-sass');
 
 const tasks = function(gulp,plugins,path){
   gulp.task('compile-sass',function(){
-    console.log('*** Compiling Sass');
+    gulp.src('./sass/*/**.scss')
+	    .pipe(sass().on('error', sass.logError))
+	    .pipe(gulp.dest('./css'));
   })
 };
 
