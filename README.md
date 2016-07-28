@@ -1,5 +1,7 @@
 # generators
 
+A repository of bare-bones generators
+
 <b>Options for generators</b>
 <table>
 <tr>
