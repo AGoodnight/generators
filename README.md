@@ -1,10 +1,15 @@
 # generators
 
 <b>Options for generators</b>
--l the location ( absolute path ) where you want the build to be built
--n the name of your project
--r the location of any resources ( absolute path ), partials etc for the build
+<table>
+<tr>
+<td>-l</td><td>the location ( absolute path ) where you want the build to be built</td>
+</tr><tr>
+<td>-n</td> <td>the name of your project</td>
+</tr><tr>
+<td>-r</td> <td>the location of any resources ( absolute path ), partials etc for the build</td>
+</tr>
+</table>
 
-<b>Build an Angular/Falsk/Bootstrap/Jasmine project</b>
-Use the build_angularbootstrap.sh
-supply the location, name and resources. your resources option will be the _partials directory
+<b>Build an Angular/Flask/Bootstrap/Jasmine project</b>
+<p>Using the build_angularbootstrap.sh supply the location, name and resources. your resources option will be the _partials directory</p>
