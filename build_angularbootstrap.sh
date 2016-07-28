@@ -51,14 +51,14 @@ npm config set save=true;
 npm config set save-exact=true;
 echo "--> initialized NPM";
 
-npm install gulp gulp-sass gulp-uglify gulp-angular-templatecache gulp-inject-partials gulp-htmllint gulp-jslint;
+npm install gulp gulp-sass gulp-uglify gulp-angular-templatecache gulp-inject-partials gulp-order gulp-htmllint gulp-jslint gulp-concat gulp-rename;
 mkdir scss; cd scss; mkdir main; mkdir modules; mkdir vendor;
 cd main; mkdir partials; cd partials; touch buttons.scss; cd ..; touch global.scss; cd ..; cd ..;
 cp "$RESOURCES/gulpfile.js" .; cp -r "$RESOURCES/gulp" .;
 echo "--> created gulp and sass";
 
-mkdir img; mkdir app; mkdir fonts; mkdir css; mkdir views;
-cd app; touch app.js; touch config.js; cd ..;
+mkdir img; mkdir app; mkdir temp; mkdir fonts; mkdir css; mkdir views;
+cd app; touch app.js; touch config.js; mkdir services; cd services; touch service.js; cd ..; cd ..;
 cd views; touch body.html; touch header.html; cd ..;
 cp "$RESOURCES/index.html" .;
 echo "--> created App and Views";
@@ -73,8 +73,11 @@ cp "$RESOURCES/.gitignore" .;
 echo "--> initialized Git repo";
 
 #WebApp
-cd main; mkdir webapp;
+cd main; mkdir webapp; cd webapp; mkdir scripts; cd ..; cd ..;
 echo "--> created webapp folder";
+
+cd ..;
+chmod 777 $ABS_PATH;
 
 #Start ionic
 #sudo npm install -g cordova ionic;
