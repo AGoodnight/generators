@@ -1,9 +1,9 @@
-const globals = require('./gulp/globals.js');
+'use strict'
+
+const globals = require('./globals.js');
 
 const jslint = require('gulp-jslint');
 const htmllint = require('gulp-htmllint');
-
-'use strict'
 
 const tasks = function(gulp,plugins,path){
   gulp.task('js-lint',function(){

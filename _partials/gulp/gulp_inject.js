@@ -1,8 +1,8 @@
-const globals = require('./gulp/globals.js');
-
-const lint = require('gulp-inject-partials');
-
 'use strict'
+
+const globals = require('./globals.js');
+
+const injectPartials = require('gulp-inject-partials');
 
 const tasks = function(gulp,plugins,path){
   gulp.task('inject-partials',function(){
@@ -10,8 +10,7 @@ const tasks = function(gulp,plugins,path){
            .pipe(injectPartials({
               removeTags: true
            }))
-           .pipe(gulp.dest(gl
-           	obals.src));
+           .pipe(gulp.dest(globals.dist_dir)); // places in the webapp directory
   })
 };
 

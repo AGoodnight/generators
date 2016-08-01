@@ -6,7 +6,10 @@
     "test": "gulp test",
     "lint": "gulp lint-scripts"
   },
-  "devDependencies": {
+  "devDependencies":{
+    "gulp-remove-files":"0.0.3",
+    "del":"2.2.1",
+    "gulp-main-bower-files":"1.5.2",
     "gulp-order":"*",
     "gulp-htmllint":"*", 
     "gulp-jslint":"*",

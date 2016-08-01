@@ -1,14 +1,14 @@
-const globals = require('./gulp/globals.js');
+'use strict'
+
+const globals = require('./globals.js');
 
 const sass = require('gulp-sass');
 
-'use strict'
-
 const tasks = function(gulp,plugins,path){
   gulp.task('compile-sass',function(){
-    gulp.src('./sass/*/**.scss')
+    gulp.src('./scss/*/**.scss')
 	    .pipe(sass().on('error', sass.logError))
-	    .pipe(gulp.dest('./css'));
+	    .pipe(gulp.dest(globals.dist_dir+'/css'))
   })
 };
 

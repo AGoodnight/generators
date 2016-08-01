@@ -29,13 +29,23 @@ mkdir main;
 
 #Test Directory
 cd test;
-mkdir angular; cd angular; mkdir $NAME; cd ..;
-mkdir flask; cd flask; mkdir $NAME; cd ..; cd ..;
+mkdir $NAME; 
+cd $NAME; 
+mkdir angular; 
+cd angular;
+cp "$RESOURCES/tests/app.spec.js" .;
+cd ..;
+mkdir flask; 
+cd ..; 
+cd ..;
 
 #Main Directory
 cd main;
-mkdir python; cd python; virtualenv venv;
+mkdir python; 
+cd python; 
+virtualenv venv;
 cp "$RESOURCES/requirements.txt" .;
+cp -a "$RESOURCES/python/." .;
 source venv/bin/activate; # enter virtual environment
 pip install -r requirements.txt;
 source deactivate; # exit virtual environment
@@ -43,30 +53,56 @@ cd ..;
 echo '--> created Virtual Environment for Python';
 
 #Static Resources
-mkdir staticResources; mkdir resources; cd staticResources;
+mkdir staticResources; 
+mkdir resources; 
+cd staticResources;
 echo "--> created staticResources directory";
 
+cp "$RESOURCES/package.json" .;
 npm ls 'fs-graceful';
-#npm init;
 npm config set save=true;
 npm config set save-exact=true;
 echo "--> initialized NPM";
-
-cp "$RESOURCES/package.json" .;
 npm install;
-mkdir scss; cd scss; mkdir main; mkdir modules; mkdir vendor;
-cd main; mkdir partials; cd partials; touch buttons.scss; cd ..; touch global.scss; cd ..; cd ..;
-cp "$RESOURCES/gulpfile.js" .; cp -r "$RESOURCES/gulp" .;
+mkdir scss; 
+cd scss; 
+mkdir main; 
+mkdir modules; 
+mkdir vendor;
+cd main; 
+mkdir partials; 
+cd partials; 
+touch buttons.scss; 
+cd ..; 
+touch global.scss; 
+cd ..; 
+cd ..;
+cp "$RESOURCES/gulpfile.js" .; 
+cp -r "$RESOURCES/gulp" .;
 echo "--> created gulp and sass";
 
-mkdir img; mkdir app; mkdir temp; mkdir fonts; mkdir css; mkdir views;
-cd app; touch app.js; touch config.js; mkdir services; cd services; touch service.js; cd ..; cd ..;
-cd views; touch body.html; touch header.html; cd ..;
+mkdir img; 
+mkdir app; 
+mkdir temp; 
+mkdir fonts; 
+mkdir css; 
+mkdir views;
+cd app; 
+touch app.js; 
+touch config.js; 
+mkdir services; 
+cd services; 
+touch service.js; 
+cd ..; 
+cd ..;
+cd views; 
+cp "$RESOURCES/header.html" .;
+cp "$RESOURCES/body.html" .;
+cd ..;
 cp "$RESOURCES/index.html" .;
 echo "--> created App and Views";
 
 cp "$RESOURCES/bower.json" .;
-#bower init --allow-root;
 bower install --allow-root --config.interactive=false -SFE;
 echo "--> installed Bower packages";
 
@@ -76,9 +112,18 @@ cp "$RESOURCES/.gitignore" .;
 echo "--> initialized Git repo";
 
 #WebApp
-cd main; mkdir webapp; cd webapp; mkdir scripts; cd ..; cd ..;
+cd main; 
+mkdir webapp; 
+cd webapp; 
+mkdir scripts;
+mkdir css;
+mkdir img;
+mkdir fonts; 
+cd ..; 
+cd ..;
 echo "--> created webapp folder";
 
+#Permissions Unlock
 cd;
 echo "$ABS_PATH/$NAME";
 chmod -R 777 "$ABS_PATH/$NAME" ;
