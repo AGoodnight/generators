@@ -14,4 +14,4 @@ A repository of bare-bones generators
 </table>
 
 Download the repository then navigate the cloned repo and run:
-<code>sudo bash build_angularbootstrap.sh -n "myBuild" -l <absolute path> -r <absolute path></code>
+<pre>sudo bash build_angularbootstrap.sh -n "myBuild" -l absolute/path -r absolute/path</pre>
