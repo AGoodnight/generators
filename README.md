@@ -1,8 +1,4 @@
-# generators
-
-A repository of bare-bones generators
-
-<b>Options for generators</b>
+<b>Options for generator</b>
 <table>
 <tr>
 <td>-l</td><td>the absolute path to where you want the build to be built</td>
