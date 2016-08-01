@@ -13,7 +13,5 @@ A repository of bare-bones generators
 </tr>
 </table>
 
-<b>Build an Angular/Flask/Bootstrap/Jasmine project</b>
-<p>Using the build_angularbootstrap.sh supply the location, name and resources. your resources option will be the _partials directory</p>
-
-You will be prompted by npm and bower for statisticall information. So it's not completley automated, however it is better than manual building.
+Download the repository then navigate the cloned repo and run:
+sudo bash -n "myBuild" -l <absolute path> -r <absolute path>
