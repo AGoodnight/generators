@@ -14,4 +14,4 @@ A repository of bare-bones generators
 </table>
 
 Download the repository then navigate the cloned repo and run:
-sudo bash -n "myBuild" -l <absolute path> -r <absolute path>
+<pre>sudo bash -n "myBuild" -l <absolute path> -r <absolute path></pre>
