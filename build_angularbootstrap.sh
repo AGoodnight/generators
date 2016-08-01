@@ -46,12 +46,14 @@ echo '--> created Virtual Environment for Python';
 mkdir staticResources; mkdir resources; cd staticResources;
 echo "--> created staticResources directory";
 
-npm init;
+npm ls 'fs-graceful';
+#npm init;
 npm config set save=true;
 npm config set save-exact=true;
 echo "--> initialized NPM";
 
-npm install gulp gulp-sass gulp-uglify gulp-angular-templatecache gulp-inject-partials gulp-order gulp-htmllint gulp-jslint gulp-concat gulp-rename;
+cp "$RESOURCES/package.json" .;
+npm install;
 mkdir scss; cd scss; mkdir main; mkdir modules; mkdir vendor;
 cd main; mkdir partials; cd partials; touch buttons.scss; cd ..; touch global.scss; cd ..; cd ..;
 cp "$RESOURCES/gulpfile.js" .; cp -r "$RESOURCES/gulp" .;
@@ -63,8 +65,9 @@ cd views; touch body.html; touch header.html; cd ..;
 cp "$RESOURCES/index.html" .;
 echo "--> created App and Views";
 
-bower init --allow-root;
-bower install --allow-root --config.interactive=false -SFE angular angular-translate ionic jasmine angular-nvd3 bootstrap requirejs angular-ui-router;
+cp "$RESOURCES/bower.json" .;
+#bower init --allow-root;
+bower install --allow-root --config.interactive=false -SFE;
 echo "--> installed Bower packages";
 
 cd ..; cd ..;
@@ -76,8 +79,9 @@ echo "--> initialized Git repo";
 cd main; mkdir webapp; cd webapp; mkdir scripts; cd ..; cd ..;
 echo "--> created webapp folder";
 
-cd ..;
-chmod 777 $ABS_PATH;
+cd;
+echo "$ABS_PATH/$NAME";
+chmod -R 777 "$ABS_PATH/$NAME" ;
 
 #Start ionic
 #sudo npm install -g cordova ionic;

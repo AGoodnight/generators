@@ -1,3 +1,5 @@
+const globals = require('./gulp/globals.js');
+
 const jslint = require('gulp-jslint');
 const htmllint = require('gulp-htmllint');
 

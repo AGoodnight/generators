@@ -1,13 +1,11 @@
 'use strict'
 
+const globals = require('./gulp/globals.js');
+
 const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const rename = require('gulp-rename');
 const order = require("gulp-order");
-
-let script_dir = './app/';
-let temp_dir = '../staticResources/temp/';
-let script_dist_dir = '../webapp/scripts/';
 
 const tasks = function(gulp,plugins,path){
 

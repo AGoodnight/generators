@@ -1,3 +1,5 @@
+const globals = require('./gulp/globals.js');
+
 const sass = require('gulp-sass');
 
 'use strict'
