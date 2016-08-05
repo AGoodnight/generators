@@ -24,40 +24,33 @@ cd $ABS_PATH;
 ls;
 mkdir $NAME;
 cd $NAME;
-mkdir test;
 mkdir main;
+cd main;
+
+cp -r "$RESOURCES/flask-microservice-blueprint" "./python";
+cd python;
+mkdir test;
+cd test;
+cp "$RESOURCES/tests/flask.spec.py" .;
+cd ..;
+docker build -t "development" .;
+cd ..;
+cd ..;
+
 
 #Test Directory
-cd test;
-mkdir $NAME; 
-cd $NAME; 
-mkdir angular; 
-cd angular;
-cp "$RESOURCES/tests/app.spec.js" .;
-cd ..;
-mkdir flask; 
-cd ..; 
-cd ..;
-
-#Main Directory
-cd main;
-mkdir python; 
-cd python; 
-virtualenv venv;
-cp "$RESOURCES/requirements.txt" .;
-cp -a "$RESOURCES/python/." .;
-source venv/bin/activate; # enter virtual environment
-pip install -r requirements.txt;
-source deactivate; # exit virtual environment
-cd ..;
-echo '--> created Virtual Environment for Python';
 
 #Static Resources
+cd main;
 mkdir staticResources; 
 mkdir resources; 
 cd staticResources;
 echo "--> created staticResources directory";
 
+mkdir test;
+cd test;
+cp "$RESOURCES/tests/app.spec.js" .;
+cd ..;
 cp "$RESOURCES/package.json" .;
 npm ls 'fs-graceful';
 npm config set save=true;
@@ -72,9 +65,10 @@ mkdir vendor;
 cd main; 
 mkdir partials; 
 cd partials; 
+cp "$RESOURCES/dashboard.scss" .;
 touch buttons.scss; 
 cd ..; 
-touch global.scss; 
+cp "$RESOURCES/global.scss" .; 
 cd ..; 
 cd ..;
 cp "$RESOURCES/gulpfile.js" .; 
