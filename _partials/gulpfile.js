@@ -17,7 +17,7 @@ gulp.task('sync',function(){
 });
 
 // Sequencing
-gulp.task('pre-compile',['lint-scripts','compile-styles','inject-partials']);
+gulp.task('pre-compile',['compile-styles','inject-partials']);
 gulp.task('compile',['sync','pre-compile','uglify-scripts']);
 
 // If SCSS changes, update css
@@ -45,4 +45,4 @@ gulp.task('lint',['lint-scripts']);
 gulp.task('test',['run-jasmine']);
 gulp.task('serve',['sync']);
 
-gulp.task('default',['build']);
+gulp.task('default',['lint','build']);
