@@ -1,6 +1,6 @@
 # Angular/Flask/Jasmine/Gulp and Bootstrapped Sass build bare-bones generator.
 
-<h3>Options<h3>
+<h3>Options</h3>
 <table>
 <tr>
 <td>-l</td><td>the location where you want the build to be built</td>
