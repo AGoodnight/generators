@@ -39,7 +39,10 @@ gulp.task('watch-js',function(){
 });
 
 // Call these directly
-gulp.task('default',['compile']);
+gulp.task('build',['compile']);
 gulp.task('watch',['watch-scss','watch-js','watch-html']);
 gulp.task('lint',['lint-scripts']);
 gulp.task('test',['run-jasmine']);
+gulp.task('serve',['sync']);
+
+gulp.task('default',['build']);

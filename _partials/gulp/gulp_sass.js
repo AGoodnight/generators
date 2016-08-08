@@ -15,14 +15,16 @@ const tasks = function(gulp,plugins,path){
 	    .pipe(debug())
 	    .pipe(rename('app.css'))
 	    .pipe(sass().on('error', sass.logError))
-	    .pipe(gulp.dest('./temp/css'))
+	    .pipe(gulp.dest(globals.temp_dir))
   });
 
   gulp.task('concat-sass',['compile-sass'],function(){
 
+  	console.log(globals.temp_dir)
+
 	// Concat our css file with any bower css files
 	return gulp.src([globals.bower_dir+'/bootstrap/dist/css/bootstrap.css',
-					globals.temp_dir+'/css/app.css'])
+					globals.temp_dir+'/app.css'])
 		.pipe(debug())
 		.pipe(concat('./app.css'))
 		.pipe(gulp.dest('../webapp/css'));
