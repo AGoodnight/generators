@@ -43,8 +43,11 @@ const tasks = function(gulp,plugins,path){
 				globals.script_dir+'**/*.js'
 			])
 			.pipe(order([
+				'views.js',
 				'app.js',
+				'routes.js',
 				'config.js',
+				'app.controller.js',
 				'services/service.js'
 			]))
 			.pipe(debug())

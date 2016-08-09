@@ -74,6 +74,9 @@ mkdir fonts;
 mkdir css; 
 mkdir views;
 cp "$RESOURCES/app.js" "app/app.js"; 
+cp "$RESOURCES/app.controller.js" "app/app.controller.js"; 
+cp "$RESOURCES/routes.js" "app/routes.js"; 
+cp "$RESOURCES/views.js" "app/views.js"; 
 cp "$RESOURCES/config.js" "app/config.js"; 
 mkdir -p "app/services"; 
 touch "app/services/service.js";
@@ -98,5 +101,6 @@ mkdir -p "main/webapp/scripts";
 mkdir -p "main/webapp/css";
 mkdir -p "main/webapp/img";
 mkdir -p "main/webapp/fonts"; 
+mkdir -p "main/webapp/views";
 echo "--> created webapp folder";
 
