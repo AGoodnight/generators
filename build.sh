@@ -64,6 +64,7 @@ cp "$RESOURCES/dashboard.scss" "scss/main/partials/dashboard.scss";
 touch "scss/main/partials/buttons.scss"; 
 cp "$RESOURCES/global.scss" "scss/main/global.scss";
 cp "$RESOURCES/gulpfile.js" .; 
+cp "$RESOURCES/karma.config.js" .; 
 cp -r "$RESOURCES/gulp" .;
 echo "--> created gulp and sass";
 

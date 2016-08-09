@@ -12,9 +12,10 @@ const tasks = function(gulp,plugins,path){
 		console.log('******* UNIT TESTS START')
 		return gulp.src(globals.test_dir+'/*.js')
 			.pipe(karma.server({
+				"configFile":globals.src+"/karma.config.js",
                 "singleRun": true,
-                frameworks:['jasmine'],
-                plugins: [
+                "frameworks":['jasmine'],
+                "plugins": [
 		            'karma-jasmine'
 	            ],
             })
