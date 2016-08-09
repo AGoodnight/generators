@@ -11,3 +11,6 @@
 </table>
 <pre>bash build.sh -l ~/Foo -n "Foo"</pre>
 <p>if no options are provided it will just build a project in the same folder you execute the script. Run the script in the folder where the build.sh and the _partials directory resides.</p>
+
+Download the repository then navigate the cloned repo and run:
+<pre>sudo bash build_angularbootstrap.sh -n "myBuild" -l absolute/path -r absolute/path</pre>
