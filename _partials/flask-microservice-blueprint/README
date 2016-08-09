@@ -1,0 +1,37 @@
+Python Flask MicroService Blueprint
+=============================
+
+This project serves the purpose of providing a baseline, bare bones RESTful microservice written in Python using the Flask web framework. This code base provides example CRUD api endpoints.
+
+### Prerequisites
+* Python 2.7.6 or greater
+
+### Local Setup for Development
+
+1. First and foremost, clone the project to your development machine and go into the project directory.
+2. Assuming you have the prerequisites, run `pip install -r requirements.txt` to install dependencies the application will use.
+3. To start the web server, run `app.py -c development.ini` 
+
+### Docker Container
+
+The project also includes a Dockerfile, which allows the application to run inside a Docker container. To run the service locally within a container, the environment must have Docker version 1.11.2 or greater.
+Running these commands from the project root directory will create the docker image and run a container from the image:
+
+1. docker build -t <Tag for the image> .
+2. docker run -p 8080:8080 <Tag for the image> 
+
+It is important to note that the port mapping option in step 2 should match both the exposed port defined in the Dockerfile as well as the port for the app defined in the development.ini
+
+### Database Usage
+
+By default, the service uses DynamoDB as the underlying data store. This requires the AWS secret access key and the AWS access key ID to be set as environment variables so that the service can use them to connect to DynamoDB.
+If running the service inside a Docker container, the following options should be added to Step 2 of the above 'Docker Container' section:
+ 
+ -e "AWS_SECRET_ACCESS_KEY=<Your secret access key>" -e "AWS_ACCESS_KEY_ID=<Your access key ID>" -e "AWS_DEFAULT_REGION=<Your region>"
+
+This ensures that the credentials for the AWS account are passed into the container as environment variables to allow the service to connect to DynamoDB.
+There is also a bootstrap script that connects to DynamoDB to create the tables necessary for the service to work - this can be run on a local environment just by running:
+
+./bootstrap.py
+
+As long as the credentials are the same as the ones that are passed into the container, the table will be created in Dynamo appropriately. 
