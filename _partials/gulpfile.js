@@ -2,30 +2,29 @@
 
 const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
-const globals = require('./gulp/globals.js');
+const globals = require('./gulp/globals');
 
 const inject = require('./gulp/gulp_inject')(gulp);
 const sass = require('./gulp/gulp_sass')(gulp);
 const lint = require('./gulp/gulp_lint')(gulp);
 const minimize = require('./gulp/gulp_uglify')(gulp);
+const tests = require('./gulp/gulp_jasmine')(gulp);
 
-browserSync.init({
-	server:globals.dist_dir
+gulp.task('sync',function(){
+	browserSync.init({
+		server:globals.dist_dir
+	});
 });
 
 // Sequencing
-gulp.task('pre-compile',['lint-scripts','compile-sass','inject-partials']);
-gulp.task('compile',['pre-compile','minimize-build']);
-gulp.task('post-compile',['compile'],function(cb){
-	browserSync.reload();
-	done();
-});
+gulp.task('pre-compile',['compile-styles','inject-partials']);
+gulp.task('compile',['sync','pre-compile','uglify-scripts']);
 
 // If SCSS changes, update css
 gulp.task('watch-scss',function(){
 	gulp.watch(globals.scss_dir+'/**/*.scss',['compile-sass'],function(cb){
-		browserSync.reload();
-		done();
+		/*browserSync.reload();
+		done();*/
 	});
 });
 
@@ -40,6 +39,10 @@ gulp.task('watch-js',function(){
 });
 
 // Call these directly
-gulp.task('default',['post-compile']);
+gulp.task('build',['compile']);
 gulp.task('watch',['watch-scss','watch-js','watch-html']);
 gulp.task('lint',['lint-scripts']);
+gulp.task('test',['run-jasmine']);
+gulp.task('serve',['sync']);
+
+gulp.task('default',['lint','build']);
