@@ -42,48 +42,48 @@ docker build -t "development" .;
 #Static Resources
 mkdir -p "$NAME/main/staticResources"; 
 mkdir -p "$NAME/main/resources"; 
-mkdir "$NAME/main/staticResources/test";
-cp "$RESOURCES/tests/app.spec.js" "$NAME/main/staticResources/test/app.spec.js";
-cp "$RESOURCES/package.json" "$NAME/main/staticResources/package.json";
+mkdir "$NAME/main/test";
+cp "$RESOURCES/tests/app.spec.js" "$NAME/main/test/app.spec.js";
+cp "$RESOURCES/package.json" "$NAME/main/package.json";
 echo "--> created staticResources directory";
 
 # We are going to navigate into the directory at this point becuase NPM is finicky.
-cd "$NAME/main/staticResources" 
-npm ls 'fs-graceful';
+cd "$NAME/main" 
+npm ls "fs-graceful";
 npm config set save=true;
 npm config set save-exact=true;
 npm install;
 echo "--> initialized NPM";
 
-mkdir scss; 
-mkdir -p scss/main; 
-mkdir -p scss/modules; 
-mkdir -p scss/vendor;
-mkdir -p scss/main/partials; 
-cp "$RESOURCES/dashboard.scss" "scss/main/partials/dashboard.scss";
-touch "scss/main/partials/buttons.scss"; 
-cp "$RESOURCES/global.scss" "scss/main/global.scss";
+mkdir -p "staticResources/scss"; 
+mkdir -p "staticResources/scss/main"; 
+mkdir -p "staticResources/scss/modules"; 
+mkdir -p "staticResources/scss/vendor";
+mkdir -p "staticResources/scss/main/partials"; 
+cp "$RESOURCES/dashboard.scss" "staticResources/scss/main/partials/dashboard.scss";
+touch "staticResources/scss/main/partials/buttons.scss"; 
+cp "$RESOURCES/global.scss" "staticResources/scss/main/global.scss";
 cp "$RESOURCES/gulpfile.js" .; 
 cp "$RESOURCES/karma.config.js" .; 
 cp -r "$RESOURCES/gulp" .;
 echo "--> created gulp and sass";
 
-mkdir img; 
-mkdir app; 
-mkdir temp; 
-mkdir fonts; 
-mkdir css; 
-mkdir views;
-cp "$RESOURCES/app.js" "app/app.js"; 
-cp "$RESOURCES/app.controller.js" "app/app.controller.js"; 
-cp "$RESOURCES/routes.js" "app/routes.js"; 
-cp "$RESOURCES/views.js" "app/views.js"; 
-cp "$RESOURCES/config.js" "app/config.js"; 
-mkdir -p "app/services"; 
-touch "app/services/service.js";
-cp "$RESOURCES/header.html" "views/header.html";
-cp "$RESOURCES/body.html" "views/body.html";
-cp "$RESOURCES/index.html" .;
+mkdir -p "staticResources/img"; 
+mkdir -p "staticResources/app"; 
+mkdir -p "staticResources/temp"; 
+mkdir -p "staticResources/fonts"; 
+mkdir -p "staticResources/css"; 
+mkdir -p "staticResources/views";
+cp "$RESOURCES/app.js" "staticResources/app/app.js"; 
+cp "$RESOURCES/app.controller.js" "staticResources/app/app.controller.js"; 
+cp "$RESOURCES/routes.js" "staticResources/app/routes.js"; 
+cp "$RESOURCES/views.js" "staticResources/app/views.js"; 
+cp "$RESOURCES/config.js" "staticResources/app/config.js"; 
+mkdir -p "staticResources/app/services"; 
+touch "staticResources/app/services/service.js";
+cp "$RESOURCES/header.html" "staticResources/views/header.html";
+cp "$RESOURCES/body.html" "staticResources/views/body.html";
+cp "$RESOURCES/index.html" "staticResources/index.html";
 cp "$RESOURCES/bower.json" .;
 bower install --config.interactive=false -SFE;
 echo "--> installed Bower packages";
@@ -91,7 +91,6 @@ echo "--> installed Bower packages";
 # Returning to builds root folder now that bower and npm have been satisfied
 echo "--> created App and Views";
 cd ..; 
-cd ..;
 git init;
 cp "$RESOURCES/.gitignore" .;
 echo "--> initialized Git repo";

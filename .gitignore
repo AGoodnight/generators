@@ -1,1 +1,3 @@
-.DS_Store
+main/staticResources/node_modules
+main/staticResources/bower_components
+main/staticResources/temp

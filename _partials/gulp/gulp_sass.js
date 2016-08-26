@@ -27,7 +27,7 @@ const tasks = function(gulp,plugins,path){
 					globals.temp_dir+'/app.css'])
 		.pipe(debug())
 		.pipe(concat('./app.css'))
-		.pipe(gulp.dest('../webapp/css'));
+		.pipe(gulp.dest(globals.css_dir));
   });
 
   gulp.task('compile-styles',['concat-sass']);
