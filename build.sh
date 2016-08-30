@@ -1,8 +1,29 @@
 #!/bin/bash
-ABS_PATH=""
-NAME=""
-SOURCEPATH=$(pwd)
-RESOURCES="$SOURCEPATH/_partials"
+ABS_PATH=$(pwd)
+NAME="UntitledAngularApp"
+RESOURCES="$ABS_PATH/_partials"
+
+#Set fonts for Help.
+NORM=`tput sgr0`
+BOLD=`tput bold`
+REV=`tput smso`
+
+#Help function
+function HELP {
+  echo -e \\n"Help documentation for ${BOLD}${SCRIPT}Angular and Flask Architecture Generator${NORM}"\\n
+  echo -e "${REV}Basic usage:${NORM} ${BOLD}$SCRIPT bash build.sh${NORM}"\\n
+  echo "Command line switches are optional. The following switches are recognized."
+  echo "${REV}-n${NORM}  --Sets the name of the new build"
+  echo "${REV}-l${NORM}  --Sets the path to the location of the new build"
+  exit 1
+}
+
+#Check the number of arguments. If none are passed, print help and exit.
+NUMARGS=$#
+echo -e \\n"Number of arguments: $NUMARGS"
+if [ $NUMARGS -eq 0 ]; then
+  HELP
+fi
 
 #Getting Options
 while getopts ":l:n:" opt; do
@@ -11,20 +32,13 @@ while getopts ":l:n:" opt; do
     n) NAME="$OPTARG";; # The name of your build
   esac
 done
+# if [ -l "$ABS_PATH" ]; then
+# 	ABS_PATH=.
+# fi
 
-#Ensure default options are provided, if none/not all specified.
-if [ $# -eq 0 ]; then
-	ABS_PATH=.;
-	NAME="UntitledAngularApp";
-fi
-
-if [ -n "$ABS_PATH" ]; then
-	ABS_PATH=.;
-fi
-
-if [ -n "$NAME" ]; then
-	NAME="UntitledAngularApp";
-fi
+# if [ -n "$NAME" ]; then
+# 	NAME="UntitledAngularApp"
+# fi
 
 
 #Getting to build location
