@@ -45,9 +45,10 @@ const tasks = function(gulp,plugins,path){
 			.pipe(order([
 				'views.js',
 				'app.js',
+				'*.controller.js',
+				'*.directive.js',
 				'routes.js',
 				'config.js',
-				'app.controller.js',
 				'services/service.js'
 			]))
 			.pipe(debug())
@@ -68,7 +69,7 @@ const tasks = function(gulp,plugins,path){
 				]))
 				.pipe(debug())
 				.pipe(concat('app.js'))
-				.pipe(gulp.dest(globals.script_dist_dir));
+				.pipe(gulp.dest(globals.script_dist_dir))
 	});
 
 };

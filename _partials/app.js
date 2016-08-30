@@ -5,7 +5,6 @@
 	angular.module('MainModule',[
 		'ui.router',
 		'ngResource',
-		'ngMocks',
 		'ngAria',
 		'ui.bootstrap',
 		'nvd3'

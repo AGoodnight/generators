@@ -2,13 +2,23 @@
   "name": "untitled",
   "version": "0.0.0",
   "dependencies": {
-    "gulp-bower-files": "0.2.7"
+    "body-parser": "1.15.2",
+    "gulp-bower-files": "0.2.7",
+    "morgan": "1.7.0",
+    "path": "0.12.7",
+    "angular": "1.5.8"
   },
   "scripts": {
     "test": "gulp test",
     "lint": "gulp lint-scripts"
   },
   "devDependencies": {
+    "jasmine-core": "2.4.1",
+    "karma": "1.2.0",
+    "karma-chrome-launcher": "2.0.0",
+    "karma-jasmine": "1.0.2",
+    "angular-mocks": "1.5.8",
+    "angular-ui-router": "0.3.1",
     "browser-sync": "~2.9.11",
     "browser-sync-spa": "~1.0.3",
     "chalk": "~1.1.1",
@@ -30,7 +40,6 @@
     "gulp-ignore": "2.0.1",
     "gulp-inject-partials": "*",
     "gulp-jasmine": "~2.4.0",
-    "gulp-karma-runner":"1.1.11",
     "gulp-jslint": "*",
     "gulp-load-plugins": "~0.10.0",
     "gulp-ng-annotate": "~1.1.0",
@@ -54,8 +63,7 @@
     "through2": "2.0.1",
     "uglify-save-license": "~0.4.1",
     "wiredep": "~2.2.2",
-    "wrench": "~1.5.8",
-    "karma-jasmine": "*"
+    "wrench": "~1.5.8"
   },
   "engines": {
     "node": ">=0.10.0"

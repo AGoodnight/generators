@@ -1,6 +1,6 @@
 var Routes = function(){
 	
-	_config.$inject =['$stateProvider','$urlRouterProvider'];
+	//_config.$inject =['$stateProvider','$urlRouterProvider'];
 	return _config;
 
 	function _config($stateProvider, $urlRouterProvider){
@@ -8,8 +8,7 @@ var Routes = function(){
 		$stateProvider.state('home',{
 			url:'',
 			templateUrl:Views().layout,
-			controller:'AppController',
-			controllerAs:'vm',
+			controller:'AppController as vm',
 			resolve:{
 				data:function(){
 					return {

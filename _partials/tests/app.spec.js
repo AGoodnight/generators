@@ -3,29 +3,24 @@
 
 describe("Main Module",function(){
 
-	var controller, scope;
+	var controller, scope, element;
 
-	beforeEach(inject(function($controller,$rootScope){
+	beforeEach(angular.mock.module('MainModule'));
+
+	beforeEach(inject(function($compile, _$httpBackend_,$controller,$rootScope){
+		$httpBackend = _$httpBackend_;  
 		scope = $rootScope.$new();
-		controller = $controller('appController',{
-			$scope:scope
-		});
+        scope.buttonRating = 'green'; //<-- Here
+        //set our view html.
+        element = angular.element('<rating-button button-rating="buttonRating"></rating-button>');
+        $compile(element)(scope);
+        scope.$digest();
 
-		describe('App Controllers scope',function(){
-			it('has a name on scope',function(){
-				expect(scope).toBeDefined();
-				expect(scope.name).toEqual('appController');
-			});
-		});
 	}));
 
-	it("Should have an instance of AppController",function(){
-		beforeEach(angular.mock.module('MainModule'));
-		expect(App.AppController).toBeDefined();
-	});
-
-	it("Should have an instance of UI-Router", inject['$state'], function(stateService){
-		expect(stateService).toBeDefined()
-	});
+	it("It should have stuff in it's isolated scope",function(){
+		expect(element.isolateScope().buttonRating).toBe('green');
+        expect(element.isolateScope().getRatingClass()).toBe('btn-success');
+    });
 	
 });

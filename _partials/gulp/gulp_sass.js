@@ -11,7 +11,7 @@ const tasks = function(gulp,plugins,path){
   gulp.task('compile-sass',function(){
 
   	// Run Sass Compiler on our scss
-    return gulp.src(['./scss/main/global.scss'])
+    return gulp.src([globals.scss_dir+'/main/global.scss'])
 	    .pipe(debug())
 	    .pipe(rename('app.css'))
 	    .pipe(sass().on('error', sass.logError))
@@ -27,7 +27,7 @@ const tasks = function(gulp,plugins,path){
 					globals.temp_dir+'/app.css'])
 		.pipe(debug())
 		.pipe(concat('./app.css'))
-		.pipe(gulp.dest(globals.css_dir));
+		.pipe(gulp.dest(globals.css_dir))
   });
 
   gulp.task('compile-styles',['concat-sass']);

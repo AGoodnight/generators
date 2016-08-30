@@ -5,11 +5,15 @@
 	_controller.$inject = ['data'];
 	
 	function _controller(data){
+		
 		var vm = this;
-		console.log('I am the praimry controller and I see: ', Views().layout, ' & ',data );
+		vm.AppController = 'Grapes';
+		this.AppController = 'Lemons';
+
+		console.log('I am the primary controller and I see: ', Views().layout, ' & ',data );
 	};
 
 	console.log("---> AppController Defined")
-	console.log(Views())
+	console.log(Views()) 
 
 })();
